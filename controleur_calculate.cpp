@@ -8,7 +8,6 @@ Controleur_Calculate::Controleur_Calculate(Regles *regles, Jeu_Ui_Calculate *jeu
 {
     _nom_jeu="Calculate!";
     _jeu_ui=jeu_ui;
-    init_game(60);
 }
 
 void Controleur_Calculate::init_game(int time)

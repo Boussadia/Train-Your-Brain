@@ -35,10 +35,10 @@ private:
     Controlleur *_controlleur;
     QString _Nom_Session;
     QString _Nom_Jeu;
-    QString _Descriptif_regles;
     Historique *_historique;
     QTimer *_duree_pouce;
     Jeu_Ui *_jeu_ui;
+    QString _descriptif_regles;
 
 };
 

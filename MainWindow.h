@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <f_accueil.h>
 #include <f_session.h>
+#include <f_stats.h>
 #include <f_jeu.h>
 
 class MainWindow : public QWidget
@@ -21,11 +22,13 @@ class MainWindow : public QWidget
         void Retour_Session_From_Stats();
         void Retour_Session_From_Game();
         void Supprimer_Session(QString Nom_Session);
+        void Afficher_Fenetre_Stats(QString Nom_Session, Historique* hist);
         void Afficher_Fenetre_Jeu(QString Nom_Session, QString Nom_Jeu, Historique* hist);
 
     private:
         F_Accueil *Fenetre_Accueil;
         F_Session *Fenetre_Session;
+        F_Stats *Fenetre_Stats;
         F_Jeu *Fenetre_Jeu;
 };
 

@@ -9,7 +9,6 @@ Controlleur_Memorize::Controlleur_Memorize(Regles *regles, Jeu_Ui_Memorize *jeu_
 {
     _nom_jeu="Memorize!";
     _jeu_ui=jeu_ui;
-    init_game();
 }
 
 

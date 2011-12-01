@@ -1,18 +1,23 @@
 #include "MainWindow.h"
 #include "f_accueil.h"
 #include "f_session.h"
+#include "f_stats.h"
 #include "f_jeu.h"
 #include "jeu_ui_calculate.h"
 #include "jeu_ui_memorize.h"
+#include "jeu_ui_quickshape.h"
 #include "regles_calculate.h"
 #include "regles_memorize.h"
+#include "regles_quickshape.h"
 #include "controleur_calculate.h"
 #include "controlleur_memorize.h"
+#include "controlleur_quickshape.h"
 #include "historique.h"
 
 #include <QWidget>
 #include <QFile>
 #include <QTextStream>
+#include <QDebug>
 #include <QMessageBox>
 
 
@@ -60,6 +65,20 @@ void MainWindow::Afficher_Fenetre_Session(QString Nom_Session)
 
 }
 
+void MainWindow::Afficher_Fenetre_Stats(QString Nom_Session, Historique* hist)
+{
+    //on instancie dans un premier temps la fenetre stats :
+    F_Stats *nll_fenetre_stats = new F_Stats(Nom_Session, hist);
+    nll_fenetre_stats->setParent(this);
+    nll_fenetre_stats->move(0,0);
+    Fenetre_Stats=nll_fenetre_stats;
+
+    //on cache la fenetre session et on affiche la fenetre stats...:
+    Fenetre_Session->hide();
+    Fenetre_Stats->show();
+
+    QObject::connect(Fenetre_Stats,SIGNAL(Signal_Retour_Session()),this,SLOT(Retour_Session_From_Stats()));
+}
 
 void MainWindow::Afficher_Fenetre_Jeu(QString nomS, QString nomJ, Historique* hist)
 {
@@ -86,6 +105,18 @@ void MainWindow::Afficher_Fenetre_Jeu(QString nomS, QString nomJ, Historique* hi
         Fenetre_Jeu=nll_fenetre_jeu;
     }
 
+    else if (nomJ == "QuickShape!")
+    {
+        Jeu_Ui_Quickshape *jeu_ui= new Jeu_Ui_Quickshape ();
+        Regles_Quickshape *regles = new Regles_Quickshape();
+        Controlleur_Quickshape *controlleur = new Controlleur_Quickshape(regles,jeu_ui);
+
+        F_Jeu *nll_fenetre_jeu = new F_Jeu(nomS,controlleur,hist,jeu_ui);
+        nll_fenetre_jeu->setParent(this);
+        nll_fenetre_jeu->move(0,0);
+        Fenetre_Jeu=nll_fenetre_jeu;
+    }
+
     //on cache la fenetre session et on affiche la fenetre jeu...:
     Fenetre_Session->hide();
     Fenetre_Jeu->show();
@@ -102,6 +133,8 @@ void MainWindow::Retour_Accueil()
 void MainWindow::Retour_Session_From_Stats()
 {
 
+        Fenetre_Stats->hide();
+        Fenetre_Session->show();
 }
 
 void MainWindow::Retour_Session_From_Game()
