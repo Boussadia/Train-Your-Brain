@@ -1,0 +1,9 @@
+Ce projet a été fait dans le cade d'un cours de programmation avancée.
+Il s'agissait de mener un projet informatique suite à nos cors sur la programmation orientée objet.
+
+Nous avons opté pour logiciel ludique sur l'entraiment de la mémoire afin d'entrainer notre cerveau.
+
+il inclut 3 jeu:
+	- Calculate! : ce jeu vous propose de calculer le plus d'opérations possibles en une minute.
+	- Memorize! : ce jeu vous propose une grille avec des cases noire, elles restent pendant 2 secondes puis toutes les cases deviennent blanches et vous devez indiquer lesquels étaient noires.
+	- QuikShape! : ce jeu vous propose une suite d'image, dés que vous voyez que deux images consécutives sont identiques, vous validez, sinon vous refusez
